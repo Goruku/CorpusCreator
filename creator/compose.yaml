@@ -1,0 +1,14 @@
+services:
+  mssql:
+    container_name: corpus-db
+    image: "mcr.microsoft.com/mssql/server:2025-latest"
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=express
+      - MSSQL_SA_PASSWORD=${MSSQL_PASSWORD}
+    volumes:
+      - corpus-bd-volume:/var/opt/mssql
+volumes:
+  corpus-bd-volume:
